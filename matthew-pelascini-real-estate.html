@@ -226,6 +226,19 @@
     content:'';position:absolute;inset:9px;border:1px solid var(--brass);border-radius:5px;
     pointer-events:none;
   }
+  .about-photo-accent{
+    position:absolute;left:-28px;bottom:-28px;z-index:4;
+    width:150px;height:150px;padding:6px;background:var(--white);border-radius:8px;
+    box-shadow:0 16px 32px -14px rgba(21,39,32,.5);
+  }
+  .about-photo-accent img{
+    width:100%;height:100%;border-radius:4px;object-fit:cover;object-position:center 25%;
+    display:block;
+  }
+  .about-photo-accent::before{
+    content:'';position:absolute;inset:5px;border:1px solid var(--brass);border-radius:3px;
+    pointer-events:none;
+  }
   .about-copy p{color:#3c473f;margin-bottom:14px;font-size:1.07rem;}
   .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px;padding-top:32px;border-top:1px solid var(--line);}
   .stat-row .num{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--evergreen);}
@@ -490,7 +503,9 @@
     .about-grid,.testi-grid,.contact-grid{grid-template-columns:1fr;}
     .carousel{padding:0 54px;}
     .carousel-arrow{width:42px;height:42px;}
+    .about-photo{margin-left:28px;}
     .about-photo img{height:360px;}
+    .about-photo-accent{width:110px;height:110px;left:-20px;bottom:-20px;}
     .form-row,.interest-options{grid-template-columns:1fr;}
     .contact-form{padding:30px;}
     .stat-row{grid-template-columns:1fr 1fr 1fr;gap:16px;}
@@ -630,7 +645,10 @@
     </div>
     <div class="about-grid">
     <div class="about-photo reveal">
-      <img src="https://images.squarespace-cdn.com/content/v1/639caf151bb9ed70c8a35f64/06e32312-2abb-4202-b022-94d72977e0a0/Headshot.jpg" alt="Matthew Pelascini portrait">
+      <img src="images/matt-headshot.jpg" alt="Matthew Pelascini portrait">
+      <div class="about-photo-accent">
+        <img src="images/matt-family.jpg" alt="Matthew Pelascini with his family">
+      </div>
     </div>
     <div class="about-copy reveal">
       <p>I&rsquo;ve been fortunate to call the Seattle area home for more than 30 years, and I&rsquo;ve had the privilege of helping many of my clients do the same. Real estate has given me the opportunity to combine my passion for this community with my commitment to helping people make some of the most important decisions of their lives.</p>
