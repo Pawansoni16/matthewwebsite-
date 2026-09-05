@@ -6,7 +6,7 @@
 <title>Matthew Pelascini | Seattle &amp; Eastside Real Estate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#1c2b24;
@@ -18,9 +18,12 @@
     --paper-dim:#efece2;
     --line:#d8d2c1;
     --white:#ffffff;
+    --navy:#283782;
+    --navy-deep:#1c2660;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
+  section[id]{scroll-margin-top:90px;}
   body{
     font-family:'Work Sans',sans-serif;
     color:var(--ink);
@@ -55,27 +58,32 @@
   /* ---------- nav ---------- */
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    padding:22px 0;
-    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+    padding:34px 0 22px;
+    border-bottom:1px solid rgba(255,255,255,.18);
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease, border-color .4s ease;
   }
   header.scrolled{
     background:rgba(28,43,36,.94);
     backdrop-filter:blur(10px);
-    padding:12px 0;
+    padding:14px 0;
+    border-bottom-color:rgba(255,255,255,.1);
     box-shadow:0 8px 24px rgba(0,0,0,.12);
   }
   .nav-inner{
     max-width:1180px;margin:0 auto;padding:0 32px;
     display:flex;align-items:center;justify-content:space-between;
   }
-  .brand{
-    font-family:'Fraunces',serif;
-    font-size:1.28rem;
-    letter-spacing:.03em;
-    color:var(--white);
-    display:flex;flex-direction:column;line-height:1.1;
+  .brand{display:flex;align-items:center;margin-left:-26px;transition:transform .3s ease;}
+  .brand:hover{transform:translateY(-1px);}
+  .brand-logo-chip{
+    display:flex;align-items:center;position:relative;
+    padding:8px 18px;
   }
-  .brand span{font-family:'Work Sans',sans-serif;font-size:.6rem;letter-spacing:.28em;color:var(--brass);margin-top:4px;}
+  .brand-logo-chip::before{
+    content:'';position:absolute;inset:-22px;z-index:-1;
+    background:radial-gradient(closest-side, rgba(255,255,255,.28) 0%, rgba(255,255,255,.12) 45%, rgba(255,255,255,0) 100%);
+  }
+  .brand-logo-chip img{height:50px;width:auto;display:block;}
   header nav ul{list-style:none;display:flex;gap:36px;align-items:center;}
   header nav a{
     color:var(--white);font-size:.86rem;letter-spacing:.04em;text-transform:uppercase;
@@ -95,7 +103,7 @@
   .nav-cta:hover{background:var(--brass);border-color:var(--brass);}
   .nav-toggle{
     display:none;background:none;border:none;cursor:pointer;
-    width:44px;height:44px;position:fixed;top:16px;right:26px;
+    width:44px;height:44px;position:fixed;top:30px;right:26px;
     align-items:center;justify-content:center;
     padding:0;z-index:2000;flex-shrink:0;
     -webkit-tap-highlight-color:transparent;touch-action:manipulation;
@@ -112,7 +120,7 @@
   .nav-toggle.open .nav-toggle-icon span:nth-child(1){transform:translateY(10px) rotate(45deg);}
   .nav-toggle.open .nav-toggle-icon span:nth-child(2){opacity:0;}
   .nav-toggle.open .nav-toggle-icon span:nth-child(3){transform:translateY(-10px) rotate(-45deg);}
-  header.scrolled + .nav-toggle{top:6px;}
+  header.scrolled + .nav-toggle{top:17px;}
 
   .mobile-menu{
     position:fixed;inset:0;z-index:1000;
@@ -138,19 +146,23 @@
 
   /* ---------- hero ---------- */
   .hero{
-    min-height:100vh;
+    min-height:70vh;
     display:flex;align-items:center;justify-content:center;
     position:relative;overflow:hidden;
     text-align:center;
+    padding:190px 0 170px;
   }
   .hero-bg{
-    position:absolute;inset:-16px;
-    background:url('https://images.squarespace-cdn.com/content/v1/639caf151bb9ed70c8a35f64/a2899974-3c54-47b6-8a49-453ef51382b2/AdobeStock_79207082+house+home+exterior+twilight.jpeg') center/cover no-repeat;
-    filter:blur(2.5px);transform:scale(1.03);z-index:0;
+    position:absolute;inset:0;
+    background:var(--evergreen-deep);
+    z-index:0;
   }
   .hero-overlay{
     position:absolute;inset:0;z-index:1;
-    background:linear-gradient(180deg, rgba(12,22,17,.62) 0%, rgba(12,22,17,.5) 38%, rgba(9,17,13,.8) 100%);
+    background:
+      radial-gradient(120% 100% at 50% 0%, rgba(38,68,58,.55) 0%, rgba(21,39,32,0) 55%),
+      radial-gradient(320px 220px at 0% 0%, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 70%),
+      radial-gradient(320px 220px at 100% 0%, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 70%);
   }
   .hero-inner{
     position:relative;z-index:2;
@@ -166,10 +178,10 @@
     text-shadow:0 2px 12px rgba(0,0,0,.4);
   }
   .hero-copy h1{
-    font-family:'Cormorant Garamond',serif;
-    color:var(--white);font-size:clamp(3rem,8vw,6.2rem);font-weight:400;
-    margin:0 0 18px;line-height:1;letter-spacing:.01em;
-    text-shadow:0 4px 24px rgba(0,0,0,.45);
+    font-family:'Playfair Display',serif;
+    color:var(--white);font-size:clamp(1.7rem,7.4vw,5.9rem);font-weight:700;
+    margin:0 0 18px;line-height:1.05;letter-spacing:.005em;white-space:nowrap;
+    text-shadow:0 4px 30px rgba(0,0,0,.5), 0 0 60px rgba(230,201,138,.3);
   }
   .hero-copy .tagline{
     font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
@@ -192,77 +204,202 @@
   .section-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:500;margin:12px 0 18px;color:var(--evergreen-deep);}
   .section-head p{color:var(--slate);font-size:1rem;}
   .section-pad{padding:110px 0;}
+  #about{padding:70px 0 80px;}
   .section-pad-sm{padding:80px 0;}
 
   /* ---------- about ---------- */
-  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:70px;align-items:center;}
-  .about-photo{position:relative;padding:14px;}
-  .about-photo img{border-radius:5px;width:100%;height:560px;object-fit:cover;object-position:center 12%;}
+  .about-head{margin:0 0 40px;}
+  .about-head .eyebrow{color:var(--brass);}
+  .about-head h2{
+    font-size:clamp(2rem,3.6vw,2.8rem);color:var(--evergreen-deep);margin:10px 0 0;font-weight:500;
+  }
+  @media (min-width:901px){
+    .about-head h2{white-space:nowrap;}
+  }
+  .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;align-items:start;}
+  .about-photo{
+    position:relative;padding:16px;background:var(--white);border-radius:10px;
+    box-shadow:0 30px 54px -26px rgba(21,39,32,.4), 0 10px 22px -12px rgba(21,39,32,.18);
+  }
+  .about-photo img{border-radius:6px;width:100%;height:600px;object-fit:cover;object-position:center 12%;}
   .about-photo::before{
-    content:'';position:absolute;inset:0;border:1px solid var(--brass);border-radius:6px;
+    content:'';position:absolute;inset:9px;border:1px solid var(--brass);border-radius:5px;
     pointer-events:none;
   }
-  .about-copy .eyebrow{color:var(--brass);}
-  .about-copy h2{font-size:clamp(1.8rem,3vw,2.35rem);color:var(--evergreen-deep);margin:12px 0 20px;font-weight:500;}
-  .about-copy p{color:#3c473f;margin-bottom:16px;font-size:1.02rem;}
+  .about-copy p{color:#3c473f;margin-bottom:14px;font-size:1.07rem;}
   .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px;padding-top:32px;border-top:1px solid var(--line);}
   .stat-row .num{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--evergreen);}
   .stat-row .label{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--slate);margin-top:4px;}
 
-  /* ---------- new listing ---------- */
-  .listing-band{background:var(--evergreen-deep);color:var(--paper);}
-  .listing-band .section-head h2{color:var(--white);}
-  .listing-band .section-head p{color:rgba(246,244,238,.7);}
-  .listing-grid{
-    display:grid;grid-template-columns:1.15fr 0.85fr;gap:0;border-radius:8px;overflow:hidden;
-    background:rgba(255,255,255,.03);box-shadow:0 0 0 1px rgba(255,255,255,.08);
-  }
-  .listing-grid img{width:100%;height:100%;object-fit:cover;min-height:420px;}
-  .listing-info{padding:48px;display:flex;flex-direction:column;justify-content:center;}
-  .listing-tag{display:inline-block;align-self:flex-start;background:var(--brass);color:var(--white);
-    font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:2px;margin-bottom:18px;}
-  .listing-info h3{font-size:1.5rem;color:var(--white);margin-bottom:6px;}
-  .listing-info .addr2{color:rgba(246,244,238,.65);font-size:.9rem;margin-bottom:18px;}
-  .listing-info p{color:rgba(246,244,238,.82);font-size:.96rem;margin-bottom:22px;}
-  .listing-facts{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:22px;font-size:.86rem;color:rgba(246,244,238,.9);}
-  .listing-facts strong{display:block;font-family:'Fraunces',serif;font-size:1.15rem;color:var(--brass);}
-  .listing-price{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--white);margin-bottom:22px;}
-
   /* ---------- sales grid ---------- */
-  .sales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
   .sale-card{
-    position:relative;border-radius:8px;overflow:hidden;height:390px;cursor:pointer;
+    position:relative;border-radius:8px;overflow:hidden;height:100%;width:100%;cursor:pointer;
     box-shadow:0 0 0 1px var(--line), 0 20px 40px -16px rgba(21,39,32,.35);
   }
   .sale-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
-  .sale-card:hover img{transform:scale(1.08);}
+  .carousel-slide.is-active .sale-card:hover img{transform:scale(1.08);}
   .sale-card .overlay{
     position:absolute;inset:0;
     background:linear-gradient(180deg, rgba(21,39,32,0) 40%, rgba(15,26,21,.88) 100%);
   }
   .sale-card .sale-info{position:absolute;left:0;right:0;bottom:0;padding:24px;color:var(--white);}
-  .sale-card .sale-info .price{font-family:'Fraunces',serif;font-size:1.3rem;color:#e6c98a;}
-  .sale-card .sale-info .loc{font-size:.86rem;letter-spacing:.03em;margin-top:2px;color:rgba(255,255,255,.85);}
-  .more-link{display:block;text-align:center;margin-top:46px;}
-  .more-link a{border-bottom:1px solid var(--brass);padding-bottom:3px;font-size:.9rem;letter-spacing:.04em;color:var(--evergreen-deep);}
-  .more-link a:hover{color:var(--brass);}
+  .sale-card .sale-info .loc{font-family:'Fraunces',serif;font-size:1.15rem;letter-spacing:.02em;color:var(--white);}
+
+  /* ---------- sales carousel ---------- */
+  .carousel{position:relative;padding:0 70px;}
+  .carousel-stage{
+    position:relative;height:500px;touch-action:pan-y;user-select:none;outline:none;
+    perspective:1600px;
+  }
+  .carousel-slide{
+    position:absolute;top:50%;left:50%;width:340px;height:420px;
+    transition:transform .32s cubic-bezier(.25,.8,.3,1), opacity .25s ease, filter .2s ease;
+    will-change:transform,opacity,filter;
+  }
+  .carousel-slide .sale-card{cursor:default;box-shadow:0 0 0 1px var(--line), 0 26px 50px -18px rgba(21,39,32,.4);}
+  .carousel-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:48px;height:48px;border-radius:50%;
+    background:var(--white);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    box-shadow:0 10px 24px -10px rgba(21,39,32,.35);
+    transition:background .25s ease, box-shadow .25s ease;
+    z-index:20;padding:0;
+  }
+  .carousel-arrow:hover{background:var(--brass);border-color:var(--brass);}
+  .carousel-arrow:hover svg{stroke:var(--white);}
+  .carousel-arrow:active{transform:translateY(-50%) scale(.92);}
+  .carousel-arrow svg{width:20px;height:20px;stroke:var(--evergreen-deep);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s ease;}
+  .carousel-arrow-left{left:0;}
+  .carousel-arrow-right{right:0;}
 
   /* ---------- testimonials ---------- */
-  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
   .testi-card{
-    background:var(--white);border:1px solid var(--line);border-radius:3px;padding:34px 30px;
+    background:var(--white);border:1px solid var(--line);border-radius:3px;padding:16px 15px;
     display:flex;flex-direction:column;
   }
-  .testi-card .quote-mark{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--brass);line-height:1;margin-bottom:8px;}
-  .testi-card p{font-size:.94rem;color:#3c473f;flex-grow:1;margin-bottom:18px;}
-  .testi-card .who{font-family:'Fraunces',serif;font-style:italic;color:var(--evergreen);font-size:.98rem;}
+  .testi-card .quote-mark{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--brass);line-height:1;margin-bottom:4px;}
+  .testi-card p{font-size:.78rem;color:#3c473f;flex-grow:1;margin-bottom:10px;}
+  .testi-card .who{font-family:'Fraunces',serif;font-style:italic;color:var(--evergreen);font-size:.82rem;}
 
-  /* ---------- process ---------- */
-  .process-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;}
-  .process-step{padding-left:24px;border-left:2px solid var(--line);}
-  .process-step .tag{font-family:'Fraunces',serif;font-style:italic;color:var(--brass);font-size:1rem;margin-bottom:10px;display:block;}
-  .process-step h3{font-size:1.18rem;color:var(--evergreen-deep);margin-bottom:12px;font-weight:500;}
-  .process-step p{color:var(--slate);font-size:.94rem;}
+  /* ---------- diptych ---------- */
+  .diptych{display:flex;height:76vh;position:relative;overflow:hidden;}
+  .diptych-panel{
+    position:relative;flex:1 1 50%;cursor:pointer;
+    perspective:1500px;
+  }
+  .diptych-panel:focus-visible{outline:2px solid var(--brass);outline-offset:-4px;}
+  .diptych-flip{position:relative;width:100%;height:100%;}
+  .diptych-face{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:flex-end;text-align:center;
+    opacity:0;transition:opacity .35s ease;pointer-events:none;
+  }
+  .diptych-front{opacity:1;pointer-events:auto;overflow:hidden;}
+  .diptych-panel.flipped .diptych-front{opacity:0;pointer-events:none;}
+  .diptych-panel.flipped .diptych-back{opacity:1;pointer-events:auto;}
+
+  .diptych-bg-outer{position:absolute;inset:0;overflow:hidden;}
+  .diptych-bg{
+    position:absolute;inset:-6%;background-size:cover;background-position:center;
+  }
+  .diptych-buyers .diptych-bg{background-image:url('images/buyers.jpg');}
+  .diptych-sellers .diptych-bg{background-image:url('images/sellers.jpg');}
+  .diptych-overlay{
+    position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg, rgba(9,17,13,0) 0%, rgba(9,17,13,.72) 100%);
+  }
+  .diptych-dim{position:absolute;inset:0;z-index:2;background:rgba(9,17,13,.4);opacity:0;}
+  .diptych-divider{flex:0 0 3px;background:var(--brass);position:relative;z-index:6;}
+  .diptych-copy{position:relative;z-index:3;padding-bottom:11%;max-width:460px;color:var(--white);}
+  .diptych-copy h2{
+    font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,3.4vw,2.7rem);
+    text-shadow:0 4px 20px rgba(0,0,0,.4);
+  }
+  .diptych-underline{display:block;width:70px;height:2px;background:var(--brass);margin:16px auto 0;transform:scaleX(0);transform-origin:left;}
+  .diptych-copy p{
+    font-size:.98rem;color:rgba(255,255,255,.85);margin-top:14px;
+    text-shadow:0 2px 12px rgba(0,0,0,.4);
+  }
+
+  /* ---------- diptych back face ---------- */
+  .diptych-back{
+    background:var(--navy);border-top:3px solid var(--brass);color:var(--white);
+    justify-content:center;padding:36px 30px;overflow:auto;
+  }
+  .diptych-back-btn{
+    position:absolute;top:14px;left:14px;z-index:5;
+    display:flex;align-items:center;justify-content:center;
+    min-height:44px;padding:0 18px;border-radius:20px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.4);color:var(--white);
+    font-family:'Work Sans',sans-serif;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;
+    cursor:pointer;transition:background .25s ease,border-color .25s ease;
+  }
+  .diptych-back-btn:hover{background:var(--brass);border-color:var(--brass);}
+  .diptych-back-inner{max-width:520px;}
+  .diptych-back-inner h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.2rem,2vw,1.5rem);margin-bottom:10px;}
+  .diptych-back-inner > p{font-size:.86rem;color:rgba(255,255,255,.8);margin-bottom:22px;}
+  .diptych-steps{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;text-align:left;}
+  .diptych-step .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:22px;height:22px;border-radius:50%;border:1px solid var(--brass);color:var(--brass);
+    font-size:.72rem;font-family:'Fraunces',serif;margin-bottom:6px;
+  }
+  .diptych-step h4{font-size:.9rem;font-weight:500;margin-bottom:4px;color:var(--white);}
+  .diptych-step p{font-size:.76rem;line-height:1.45;color:rgba(255,255,255,.72);}
+
+  @media (prefers-reduced-motion:no-preference){
+    .diptych-bg-outer{animation:diptychKenBurns 20s ease-in-out infinite alternate;}
+    .diptych-bg{transition:transform .3s ease;}
+    .diptych-overlay,.diptych-dim{transition:opacity .2s ease;}
+    .diptych-divider{animation:diptychDividerPulse 2.6s ease-in-out infinite;}
+    .diptych-copy h2{transition:transform .18s ease-out .04s, opacity .18s ease-out .04s;transform:translateY(10px);opacity:.88;}
+    .diptych-underline{transition:transform .2s ease .04s;}
+
+    /* real 3D flip replaces the base cross-fade */
+    .diptych-flip{transform-style:preserve-3d;transition:transform .4s ease-in-out;}
+    .diptych-face{opacity:1;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:none;}
+    .diptych-front{pointer-events:auto;}
+    .diptych-back{transform:rotateY(180deg);pointer-events:none;}
+    .diptych-panel.flipped .diptych-flip{transform:rotateY(180deg);}
+    .diptych-panel.flipped .diptych-front{opacity:1;pointer-events:none;}
+    .diptych-panel.flipped .diptych-back{opacity:1;pointer-events:auto;}
+  }
+  @keyframes diptychKenBurns{0%{transform:scale(1);}100%{transform:scale(1.08);}}
+  @keyframes diptychDividerPulse{
+    0%,100%{box-shadow:0 0 6px 1px rgba(173,138,82,.5);}
+    50%{box-shadow:0 0 16px 3px rgba(173,138,82,.9);}
+  }
+
+  @media (prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+    .diptych-panel{transition:flex-basis .35s cubic-bezier(.65,0,.35,1);}
+    .diptych:not(.is-flipped).hover-buyers .diptych-buyers{flex:0 0 62%;}
+    .diptych:not(.is-flipped).hover-buyers .diptych-sellers{flex:0 0 38%;}
+    .diptych:not(.is-flipped).hover-sellers .diptych-sellers{flex:0 0 62%;}
+    .diptych:not(.is-flipped).hover-sellers .diptych-buyers{flex:0 0 38%;}
+    .diptych:not(.is-flipped).hover-buyers .diptych-sellers .diptych-dim,
+    .diptych:not(.is-flipped).hover-sellers .diptych-buyers .diptych-dim{opacity:1;}
+    .diptych-panel:not(.flipped):hover .diptych-bg{transform:scale(1.06);}
+    .diptych-panel:not(.flipped):hover .diptych-copy h2{transform:translateY(0);opacity:1;}
+    .diptych-panel:not(.flipped):hover .diptych-underline{transform:scaleX(1);}
+  }
+
+  @media (max-width:767px){
+    .diptych{flex-direction:column;height:auto;}
+    .diptych-panel{flex:0 0 50vh;height:50vh;}
+    .diptych-divider{flex:0 0 3px;width:100%;}
+    .diptych-steps{grid-template-columns:1fr;gap:12px;}
+    .diptych-back{padding:30px 22px;}
+    .diptych-back-inner > p{margin-bottom:16px;}
+  }
+  @media (max-width:767px) and (prefers-reduced-motion:no-preference){
+    .diptych-panel{opacity:0;transform:scale(.95);}
+    .diptych-panel:not(.flipped){transition:opacity .7s ease, transform .7s ease;}
+    .diptych-panel.in-view{opacity:1;transform:scale(1);}
+    .diptych-copy h2{transform:none;opacity:1;transition:none;}
+  }
+
   /* ---------- contact ---------- */
   .contact{
     background:linear-gradient(180deg, rgba(21,39,32,.6) 0%, rgba(15,26,21,.92) 100%),
@@ -272,6 +409,9 @@
   .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start;}
   .contact .eyebrow{color:#e9d3a4;}
   .contact h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin:14px 0 18px;font-weight:500;}
+  @media (min-width:901px){
+    .contact h2{white-space:nowrap;font-size:clamp(1.4rem,2.6vw,2.6rem);}
+  }
   .contact p.lead{color:rgba(255,255,255,.82);max-width:420px;margin-bottom:34px;}
   .contact-links{display:flex;flex-direction:column;gap:10px;margin-bottom:34px;}
   .contact-links a{font-size:1.05rem;border-bottom:1px solid transparent;padding-bottom:2px;align-self:flex-start;transition:border-color .3s ease, color .3s ease;}
@@ -347,21 +487,27 @@
   @media (max-width:900px){
     header nav{display:none;}
     .nav-toggle{display:flex;}
-    .about-grid,.listing-grid,.sales-grid,.testi-grid,.process-wrap,.contact-grid{grid-template-columns:1fr;}
+    .about-grid,.testi-grid,.contact-grid{grid-template-columns:1fr;}
+    .carousel{padding:0 54px;}
+    .carousel-arrow{width:42px;height:42px;}
     .about-photo img{height:360px;}
-    .listing-grid img{min-height:280px;}
     .form-row,.interest-options{grid-template-columns:1fr;}
     .contact-form{padding:30px;}
     .stat-row{grid-template-columns:1fr 1fr 1fr;gap:16px;}
     .wrap{padding:0 22px;}
     .section-pad{padding:80px 0;}
-    .listing-info{padding:34px 28px;}
   }
   @media (max-width:520px){
-    .hero-copy h1{font-size:2.7rem;}
+    .hero{min-height:60vh;padding:150px 0 140px;}
+    .hero-inner{padding:0 18px;}
     .stat-row{grid-template-columns:1fr;gap:20px;text-align:left;}
-    .brand{font-size:1.1rem;}
-    .brand span{font-size:.55rem;}
+    .brand{margin-left:-16px;}
+    .brand-logo-chip img{height:36px;}
+    .carousel{padding:0 42px;}
+    .carousel-stage{height:420px;}
+    .carousel-slide{width:260px;height:330px;}
+    .carousel-arrow{width:36px;height:36px;}
+    .carousel-arrow svg{width:16px;height:16px;}
   }
 
   /* ---------- contact section: mobile-only makeover (desktop untouched) ---------- */
@@ -425,13 +571,13 @@
 
 <header id="siteHeader">
   <div class="nav-inner">
-    <a class="brand" href="#top">Matthew Pelascini<span>Real&nbsp;Estate&nbsp;&middot;&nbsp;Seattle&nbsp;&amp;&nbsp;Eastside</span></a>
+    <a class="brand" href="#top"><span class="brand-logo-chip"><img src="assets/mjp-logo-hq-transparent.png" alt="Matthew Pelascini Real Estate logo"></span></a>
     <nav>
       <ul>
         <li><a href="#top">Home</a></li>
         <li><a href="#about">Meet Matt</a></li>
         <li><a href="#sales">Successful Sales</a></li>
-        <li><a href="#process">Process</a></li>
+        <li><a href="#diptych">Process</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
     </nav>
@@ -446,14 +592,13 @@
     <ul>
       <li><a href="#top">Home</a></li>
       <li><a href="#about">Meet Matt</a></li>
-      <li><a href="#listing">New to Market</a></li>
       <li><a href="#sales">Successful Sales</a></li>
-      <li><a href="#process">Process</a></li>
+      <li><a href="#diptych">Process</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="mobile-menu-contact">
       <a href="tel:12062275444">206.227.5444</a>
-      <a href="mailto:Matt.Pelascini@Windermere.com">Matt.Pelascini@Windermere.com</a>
+      <a href="mailto:matt.pelascini@windermere.com">matt.pelascini@windermere.com</a>
     </div>
   </nav>
 </div>
@@ -466,11 +611,10 @@
     <div class="hero-copy reveal in">
       <p class="eyebrow">Seattle &amp; The Eastside</p>
       <h1>Matthew Pelascini</h1>
-      <p class="tagline">Real estate, done personally &mdash; since 2002.</p>
+      <p class="tagline">Real estate, done personally &mdash; since 2008.</p>
       <div class="hero-rule"></div>
       <div class="btn-row">
         <a href="#contact" class="btn btn-primary">Get in Touch</a>
-        <a href="#sales" class="btn btn-ghost">View Successful Sales</a>
       </div>
     </div>
   </div>
@@ -479,77 +623,222 @@
 <svg class="shoreline" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 20 Q 120 4, 240 20 T 480 20 T 720 20 T 960 20 T 1180 20"/></svg>
 
 <section class="section-pad" id="about">
-  <div class="wrap about-grid">
+  <div class="wrap">
+    <div class="about-head reveal">
+      <p class="eyebrow">About Matt</p>
+      <h2>There's no place quite like the Pacific Northwest.</h2>
+    </div>
+    <div class="about-grid">
     <div class="about-photo reveal">
       <img src="https://images.squarespace-cdn.com/content/v1/639caf151bb9ed70c8a35f64/06e32312-2abb-4202-b022-94d72977e0a0/Headshot.jpg" alt="Matthew Pelascini portrait">
     </div>
     <div class="about-copy reveal">
-      <p class="eyebrow">About Matt</p>
-      <h2>There's no place quite like a summer afternoon in the Pacific Northwest.</h2>
-      <p>I've been fortunate to call this area home for over 20 years and have had the privilege of helping clients say the same thing. My passion for serving my clients goes beyond the standard Realtor&reg; responsibilities &mdash; I take pride in teaming up with each one of my clients in a personal way. I'm excited to have the opportunity to walk with you through this exciting process.</p>
-      <p>Matthew works out of the Windermere Bellevue Commons office as an Associate Broker. He has built a team around him with over 50 years of combined industry experience and is recognized as a top producing broker in Western Washington, specializing in residential real estate throughout Seattle and the surrounding areas &mdash; from first-time buyers to seasoned investors.</p>
-      <div class="stat-row">
-        <div><div class="num">2002</div><div class="label">Serving Seattle Since</div></div>
-        <div><div class="num">50+</div><div class="label">Years, Combined Team</div></div>
-        <div><div class="num">Top</div><div class="label">Producing Broker</div></div>
-      </div>
+      <p>I&rsquo;ve been fortunate to call the Seattle area home for more than 30 years, and I&rsquo;ve had the privilege of helping many of my clients do the same. Real estate has given me the opportunity to combine my passion for this community with my commitment to helping people make some of the most important decisions of their lives.</p>
+      <p>My approach goes beyond the standard responsibilities of a Realtor&reg;. I take pride in building a personal relationship with every client and truly becoming a partner throughout the process. Whether you&rsquo;re purchasing your first home, looking for the next chapter, selling a longtime residence, or investing in real estate, I believe the best results come from listening closely, communicating openly, and understanding what matters most to you.</p>
+      <p>I work out of Windermere Bellevue West as an Associate Broker and have built a team around me with more than 50 years of combined real estate experience. Together, we bring a depth of knowledge, local expertise, and hands-on service to every transaction. I&rsquo;m proud to be recognized as a top-producing broker in Western Washington, specializing in residential real estate throughout Seattle and the surrounding communities.</p>
+      <p>Most importantly, I&rsquo;m grateful for the relationships that have come from this business. Real estate is about much more than buying or selling a home&mdash;it&rsquo;s about helping people navigate change, reach their goals, and ultimately find a place they&rsquo;re excited to call home. I look forward to the opportunity to walk alongside you through that process.</p>
+    </div>
     </div>
   </div>
 </section>
 
 <svg class="shoreline" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 20 Q 120 4, 240 20 T 480 20 T 720 20 T 960 20 T 1180 20"/></svg>
 
-<section class="listing-band section-pad" id="listing">
+<section class="section-pad" id="sales">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">New to Market</p>
-      <h2>18322 SE 195th Place, Renton, WA 98058</h2>
+      <p class="eyebrow">Recent Sales</p>
+      <h2>Homes I've Sold</h2>
+      <p>A few recent homes I've helped clients buy and sell across Seattle and the Eastside.</p>
     </div>
-    <div class="listing-grid reveal">
-      <img src="https://images.squarespace-cdn.com/content/v1/639caf151bb9ed70c8a35f64/2a1581d3-d25a-4758-93fd-3e0e6f9450a6/1996101_0.jpg" alt="18322 SE 195th Place, Renton, WA exterior">
-      <div class="listing-info">
-        <span class="listing-tag">New to Market</span>
-        <h3>Custom Gated Estate in The Grove</h3>
-        <div class="addr2">Spring Lake &middot; Renton, WA 98058</div>
-        <p>A custom gated estate in the area's premier community, offering the perfect blend of functionality, design, and privacy &mdash; from a chef's kitchen and main-floor primary suite to multiple ensuite bedrooms, a movie room, studio, and oversized 6-car garage, all sited on a private, sunny parcel of over an acre.</p>
-        <div class="listing-facts">
-          <div><strong>4</strong>Bedrooms</div>
-          <div><strong>5.25</strong>Bathrooms</div>
-          <div><strong>7,564</strong>Sq. Ft.</div>
-          <div><strong>2001</strong>Built</div>
+    <div class="carousel reveal">
+      <button type="button" class="carousel-arrow carousel-arrow-left" id="carouselPrev" aria-label="Previous property">
+        <svg viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8"/></svg>
+      </button>
+      <div class="carousel-stage" id="carouselStage" tabindex="0" aria-roledescription="carousel" aria-label="Homes I've sold">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property1.jpg" alt="Bainbridge Island home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Bainbridge Island</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property2.jpg" alt="Bellevue home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Bellevue</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property3.jpg" alt="Gig Harbor home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Gig Harbor</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property4.jpg" alt="Laurelhurst home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Laurelhurst</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property5.jpg" alt="Lake Sammamish home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Lake Sammamish</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property6.jpg" alt="Kirkland home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Kirkland</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property7.jpg" alt="Issaquah home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Issaquah</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property8.jpg" alt="Hunts Point home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Hunts Point</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property9.jpg" alt="Queen Anne home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Queen Anne</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property10.jpg" alt="Redmond home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Redmond</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property11.jpg" alt="Renton home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Renton</div></div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="sale-card">
+              <img src="properties/property12.jpg" alt="Sammamish home exterior">
+              <div class="overlay"></div>
+              <div class="sale-info"><div class="loc">Sammamish</div></div>
+            </div>
+          </div>
         </div>
-        <div class="listing-price">Offered at $2,649,000</div>
-        <a href="https://www.matthewpelascinihomes.com/meet-matt18322-se-195th-place-renton-wa-98058" class="btn btn-primary" style="align-self:flex-start;">View Listing</a>
       </div>
+      <button type="button" class="carousel-arrow carousel-arrow-right" id="carouselNext" aria-label="Next property">
+        <svg viewBox="0 0 24 24"><path d="M9 4l8 8-8 8"/></svg>
+      </button>
     </div>
   </div>
 </section>
 
-<section class="section-pad" id="sales">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Track Record</p>
-      <h2>Successful Sales</h2>
-      <p>A selection of recent closings across Seattle and the Eastside &mdash; each one a client walked through, start to finish.</p>
+<svg class="shoreline" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 20 Q 120 4, 240 20 T 480 20 T 720 20 T 960 20 T 1180 20"/></svg>
+
+<section class="diptych" id="diptych">
+  <div class="diptych-panel diptych-buyers" tabindex="0" role="button" aria-pressed="false" aria-label="Buying a Home. Press to see the step-by-step process.">
+    <div class="diptych-flip">
+      <div class="diptych-face diptych-front">
+        <div class="diptych-bg-outer"><div class="diptych-bg"></div></div>
+        <div class="diptych-overlay"></div>
+        <div class="diptych-dim"></div>
+        <div class="diptych-copy">
+          <h2>Buying a Home</h2>
+          <span class="diptych-underline"></span>
+          <p>See how I guide you from first search to closing</p>
+        </div>
+      </div>
+      <div class="diptych-face diptych-back">
+        <button type="button" class="diptych-back-btn" tabindex="-1" aria-label="Back to photo">&larr; Back</button>
+        <div class="diptych-back-inner">
+          <h3>Your Home Buying Journey</h3>
+          <p>A clear, personal process built around your goals &mdash; from our first conversation to the day you get the keys.</p>
+          <div class="diptych-steps">
+            <div class="diptych-step">
+              <span class="num">1</span>
+              <h4>Consultation</h4>
+              <p>We start with a focused conversation about your goals, priorities, and timing.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">2</span>
+              <h4>Preparation</h4>
+              <p>We confirm you're ready to act, positioning you as a strong, credible buyer.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">3</span>
+              <h4>Property Search</h4>
+              <p>We identify on- and off-market opportunities aligned with your goals.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">4</span>
+              <h4>Negotiation &amp; Closing</h4>
+              <p>We manage offers and negotiations, staying hands-on through closing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="sales-grid">
-      <div class="sale-card reveal">
-        <img src="https://images.squarespace-cdn.com/content/v1/639caf151bb9ed70c8a35f64/5ec73577-49de-47e4-b690-ea9dcc5f5164/1144+16th+Ave%2C+Seattle%2C+WA+98122.jpg" alt="Seattle, WA 98122 aerial view">
-        <div class="overlay"></div>
-        <div class="sale-info"><div class="price">Sold at $1,010,000</div><div class="loc">Seattle, WA 98122</div></div>
+  </div>
+  <div class="diptych-divider"></div>
+  <div class="diptych-panel diptych-sellers" tabindex="0" role="button" aria-pressed="false" aria-label="Selling Your Home. Press to see the step-by-step process.">
+    <div class="diptych-flip">
+      <div class="diptych-face diptych-front">
+        <div class="diptych-bg-outer"><div class="diptych-bg"></div></div>
+        <div class="diptych-overlay"></div>
+        <div class="diptych-dim"></div>
+        <div class="diptych-copy">
+          <h2>Selling Your Home</h2>
+          <span class="diptych-underline"></span>
+          <p>See how I market and manage your sale start to finish</p>
+        </div>
       </div>
-      <div class="sale-card reveal">
-        <img src="https://images.squarespace-cdn.com/content/v1/639caf151bb9ed70c8a35f64/dcc87b35-a077-4905-a4c2-e7320ba5f3ca/4265+E+Lake+Sammamish+Shore+Lane+SE%2C+Sammamish%2C+WA+98075.jpg" alt="Sammamish, WA 98075 waterfront patio">
-        <div class="overlay"></div>
-        <div class="sale-info"><div class="price">Sold at $1,800,000</div><div class="loc">Sammamish, WA 98075</div></div>
-      </div>
-      <div class="sale-card reveal">
-        <img src="https://images.squarespace-cdn.com/content/v1/639caf151bb9ed70c8a35f64/97eb51ba-52a1-4eb8-acad-304c98b562ba/Clyde+Hill.jpeg" alt="Clyde Hill, WA exterior">
-        <div class="overlay"></div>
-        <div class="sale-info"><div class="price">Sold at $3,200,000</div><div class="loc">Kirkland, WA 98033</div></div>
+      <div class="diptych-face diptych-back">
+        <button type="button" class="diptych-back-btn" tabindex="-1" aria-label="Back to photo">&larr; Back</button>
+        <div class="diptych-back-inner">
+          <h3>Selling Your Home, Start to Finish</h3>
+          <p>From preparing your home to closing day, I handle the details so you can focus on what's next.</p>
+          <div class="diptych-steps">
+            <div class="diptych-step">
+              <span class="num">1</span>
+              <h4>Strategy &amp; Pricing</h4>
+              <p>A tailored strategy built around your home and current market conditions.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">2</span>
+              <h4>Presentation &amp; Marketing</h4>
+              <p>Professional photography, video, and targeted campaigns.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">3</span>
+              <h4>Showings &amp; Offers</h4>
+              <p>We manage every showing and negotiate to protect your interests.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">4</span>
+              <h4>Closing &amp; Support</h4>
+              <p>Hands-on through closing, and available for whatever comes next.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="more-link reveal"><a href="https://www.matthewpelascinihomes.com/successful-sales">View More Successful Sales &rarr;</a></div>
   </div>
 </section>
 
@@ -581,44 +870,16 @@
   </div>
 </section>
 
-<svg class="shoreline" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 20 Q 120 4, 240 20 T 480 20 T 720 20 T 960 20 T 1180 20"/></svg>
-
-<section class="section-pad" id="process">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">How We'll Work Together</p>
-      <h2>A Personal Process, From First Tour to Closing</h2>
-    </div>
-    <div class="process-wrap">
-      <div class="process-step reveal">
-        <span class="tag">Search</span>
-        <h3>Understand &amp; Explore</h3>
-        <p>We start with what matters to you &mdash; neighborhood, lifestyle, budget &mdash; and I put my knowledge of Seattle and the Eastside to work narrowing in on the right homes, honestly, even in areas I have to research further for you.</p>
-      </div>
-      <div class="process-step reveal">
-        <span class="tag">Offer</span>
-        <h3>Offer &amp; Inspection</h3>
-        <p>When you're ready, I lay out every detail of the offer and counter-offer process and connect you with trusted professionals for inspections, so nothing about this stage feels tedious or unclear.</p>
-      </div>
-      <div class="process-step reveal">
-        <span class="tag">Close</span>
-        <h3>Closing &amp; Beyond</h3>
-        <p>I stay hands-on through closing &mdash; and I check in long after the keys are in your hands. Many clients become lifelong relationships, and I'm always here for whatever comes next.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="contact section-pad" id="contact">
   <div class="wrap">
     <div class="contact-grid">
       <div class="contact-side reveal">
-        <p class="eyebrow">Let's Chat</p>
         <h2>I'd love to hear from you</h2>
         <p class="lead">Whether you're just starting to think about buying or selling, or ready to make a move &mdash; reach out any time.</p>
         <div class="contact-links">
           <a href="tel:12062275444"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></span><span class="cta-text">206.227.5444</span></a>
-          <a href="mailto:Matt.Pelascini@Windermere.com"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2.4V6.6l8 5.6 8-5.6v-.2H4zm16 2.3l-7.4 5.2a1 1 0 01-1.2 0L4 8.7V18h16V8.7z"/></svg></span><span class="cta-text">Matt.Pelascini@Windermere.com</span></a>
+          <a href="mailto:matt.pelascini@windermere.com"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2.4V6.6l8 5.6 8-5.6v-.2H4zm16 2.3l-7.4 5.2a1 1 0 01-1.2 0L4 8.7V18h16V8.7z"/></svg></span><span class="cta-text">matt.pelascini@windermere.com</span></a>
+          <a href="https://maps.google.com/?q=150+120th+Ave+NE+Suite+F+200,+Bellevue,+WA+98005" target="_blank" rel="noopener"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2c-4.42 0-8 3.58-8 8 0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg></span><span class="cta-text">150 120th Ave NE Suite F 200, Bellevue, WA 98005</span></a>
         </div>
         <div class="social-row">
           <a href="https://www.facebook.com/people/Matthew-J-Pelascini-Real-Estate/100063570763015/" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6C16.4 3.55 15.4 3.5 14.3 3.5c-2.4 0-4 1.45-4 4.1V9.9H7.6V13h2.7v8h3.2z"/></svg></a>
@@ -688,10 +949,167 @@
     header.classList.toggle('scrolled', window.scrollY > 40);
   });
 
+  (function(){
+    const salesSection = document.getElementById('sales');
+    if (!salesSection) return;
+    document.querySelectorAll('a[href="#sales"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const rect = salesSection.getBoundingClientRect();
+        const extraSpace = Math.max(0, (window.innerHeight - rect.height) / 2);
+        const targetTop = window.scrollY + rect.top - extraSpace;
+        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+      });
+    });
+  })();
+
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  (function(){
+    const diptych = document.getElementById('diptych');
+    if (!diptych) return;
+    const panels = Array.from(diptych.querySelectorAll('.diptych-panel'));
+    const buyers = diptych.querySelector('.diptych-buyers');
+    const sellers = diptych.querySelector('.diptych-sellers');
+
+    if (buyers && sellers) {
+      buyers.addEventListener('mouseenter', () => diptych.classList.add('hover-buyers'));
+      buyers.addEventListener('mouseleave', () => diptych.classList.remove('hover-buyers'));
+      sellers.addEventListener('mouseenter', () => diptych.classList.add('hover-sellers'));
+      sellers.addEventListener('mouseleave', () => diptych.classList.remove('hover-sellers'));
+    }
+
+    function updateFlippedClass(){
+      diptych.classList.toggle('is-flipped', panels.some(p => p.classList.contains('flipped')));
+    }
+
+    function flipOpen(panel){
+      panels.forEach(p => {
+        if (p !== panel && p.classList.contains('flipped')) {
+          p.classList.remove('flipped');
+          p.setAttribute('aria-pressed', 'false');
+          const otherBtn = p.querySelector('.diptych-back-btn');
+          if (otherBtn) otherBtn.tabIndex = -1;
+        }
+      });
+      panel.classList.add('flipped');
+      panel.setAttribute('aria-pressed', 'true');
+      updateFlippedClass();
+      const backBtn = panel.querySelector('.diptych-back-btn');
+      if (backBtn) { backBtn.tabIndex = 0; backBtn.focus(); }
+    }
+
+    function flipClose(panel){
+      panel.classList.remove('flipped');
+      panel.setAttribute('aria-pressed', 'false');
+      updateFlippedClass();
+      const backBtn = panel.querySelector('.diptych-back-btn');
+      if (backBtn) backBtn.tabIndex = -1;
+      panel.focus();
+    }
+
+    panels.forEach(panel => {
+      panel.addEventListener('click', () => {
+        if (!panel.classList.contains('flipped')) flipOpen(panel);
+      });
+      panel.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          if (!panel.classList.contains('flipped')) flipOpen(panel);
+        }
+      });
+      const backBtn = panel.querySelector('.diptych-back-btn');
+      if (backBtn) {
+        backBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          flipClose(panel);
+        });
+      }
+    });
+
+    const dio = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); dio.unobserve(e.target); } });
+    }, { threshold: 0.25 });
+    panels.forEach(el => dio.observe(el));
+  })();
+
+  (function(){
+    const stage = document.getElementById('carouselStage');
+    const track = document.getElementById('carouselTrack');
+    if (!stage || !track) return;
+    const slides = Array.from(track.children);
+    const total = slides.length;
+    let active = 0;
+
+    const TIERS = {
+      0: { scale: 1.06, blur: 0,  opacity: 1,   rotate: 0,  y: 0  },
+      1: { scale: .8,   blur: 3,  opacity: .6,  rotate: 32, y: 12 },
+      2: { scale: .58,  blur: 6,  opacity: .3,  rotate: 48, y: 34 }
+    };
+    const OFFSET = { 1: 220, 2: 380 };
+
+    function layout(){
+      const w = stage.getBoundingClientRect().width;
+      let scaleFactor = 1;
+      if (w < 480) scaleFactor = .62;
+      else if (w < 700) scaleFactor = .8;
+      slides.forEach((slide, i) => {
+        let diff = i - active;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+        const abs = Math.min(Math.abs(diff), 3);
+        const sign = diff === 0 ? 0 : (diff > 0 ? 1 : -1);
+        const tier = TIERS[abs];
+        if (!tier) {
+          slide.style.opacity = 0;
+          slide.style.pointerEvents = 'none';
+          slide.style.zIndex = 0;
+          return;
+        }
+        const tx = sign * (OFFSET[abs] || 0) * scaleFactor;
+        const ty = tier.y * scaleFactor;
+        const rot = -sign * tier.rotate;
+        slide.style.transform = `translate(-50%,-50%) translateX(${tx}px) translateY(${ty}px) rotateY(${rot}deg) scale(${tier.scale})`;
+        slide.style.filter = `blur(${tier.blur}px)`;
+        slide.style.opacity = tier.opacity;
+        slide.style.zIndex = 10 - abs;
+        slide.classList.toggle('is-active', abs === 0);
+        slide.style.pointerEvents = abs === 0 ? 'auto' : 'none';
+      });
+    }
+
+    function go(dir){
+      active = (active + dir + total) % total;
+      layout();
+    }
+
+    document.getElementById('carouselPrev').addEventListener('click', () => go(-1));
+    document.getElementById('carouselNext').addEventListener('click', () => go(1));
+
+    let startX = 0, dragging = false;
+    stage.addEventListener('pointerdown', (e) => {
+      dragging = true; startX = e.clientX;
+      stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener('pointerup', (e) => {
+      if (!dragging) return;
+      dragging = false;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    });
+    stage.addEventListener('pointercancel', () => { dragging = false; });
+
+    stage.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') go(-1);
+      if (e.key === 'ArrowRight') go(1);
+    });
+
+    window.addEventListener('resize', layout);
+    layout();
+  })();
 
   const navToggle = document.getElementById('navToggle');
   const mobileMenu = document.getElementById('mobileMenu');
