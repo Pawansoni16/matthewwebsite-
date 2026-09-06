@@ -6,7 +6,7 @@
 <title>Matthew Pelascini | Seattle &amp; Eastside Real Estate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#1c2b24;
@@ -58,35 +58,34 @@
   /* ---------- nav ---------- */
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    padding:34px 0 22px;
-    border-bottom:1px solid rgba(255,255,255,.18);
+    padding:14px 0;
+    background:rgba(233,211,164,.28);
+    backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border-bottom:1px solid rgba(233,211,164,.5);
+    box-shadow:0 14px 34px -18px rgba(21,39,32,.4);
     transition:background .4s ease, padding .4s ease, box-shadow .4s ease, border-color .4s ease;
   }
   header.scrolled{
-    background:rgba(28,43,36,.94);
-    backdrop-filter:blur(10px);
-    padding:14px 0;
-    border-bottom-color:rgba(255,255,255,.1);
-    box-shadow:0 8px 24px rgba(0,0,0,.12);
+    padding:8px 0;
+    background:rgba(233,211,164,.44);
+    border-color:rgba(233,211,164,.65);
+    box-shadow:0 16px 36px -16px rgba(21,39,32,.45);
   }
   .nav-inner{
     max-width:1180px;margin:0 auto;padding:0 32px;
     display:flex;align-items:center;justify-content:space-between;
   }
-  .brand{display:flex;align-items:center;margin-left:-26px;transition:transform .3s ease;}
+  .brand{display:flex;align-items:center;transition:transform .3s ease;}
   .brand:hover{transform:translateY(-1px);}
   .brand-logo-chip{
     display:flex;align-items:center;position:relative;
-    padding:8px 18px;
+    padding:2px 0;
   }
-  .brand-logo-chip::before{
-    content:'';position:absolute;inset:-22px;z-index:-1;
-    background:radial-gradient(closest-side, rgba(255,255,255,.28) 0%, rgba(255,255,255,.12) 45%, rgba(255,255,255,0) 100%);
-  }
-  .brand-logo-chip img{height:50px;width:auto;display:block;}
+  .brand-logo-chip img{height:74px;width:auto;display:block;}
   header nav ul{list-style:none;display:flex;gap:36px;align-items:center;}
   header nav a{
-    color:var(--white);font-size:.86rem;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--evergreen-deep);font-size:.86rem;letter-spacing:.04em;text-transform:uppercase;
     position:relative;padding-bottom:4px;
   }
   header nav a::after{
@@ -95,32 +94,40 @@
   }
   header nav a:hover::after{width:100%;}
   .nav-cta{
-    border:1px solid rgba(255,255,255,.5);
+    border:1px solid rgba(28,43,36,.35);
     padding:9px 18px;border-radius:2px;
     font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;
-    transition:background .3s ease, border-color .3s ease;
+    transition:background .3s ease, border-color .3s ease, color .3s ease;
   }
-  .nav-cta:hover{background:var(--brass);border-color:var(--brass);}
+  .nav-cta:hover{background:var(--brass);border-color:var(--brass);color:var(--white);}
   .nav-toggle{
-    display:none;background:none;border:none;cursor:pointer;
-    width:44px;height:44px;position:fixed;top:30px;right:26px;
+    display:none;cursor:pointer;
+    width:44px;height:44px;position:fixed;top:31px;right:26px;
     align-items:center;justify-content:center;
     padding:0;z-index:2000;flex-shrink:0;
     -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-    transition:top .4s ease;
+    background:rgba(233,211,164,.28);
+    backdrop-filter:blur(14px) saturate(160%);
+    -webkit-backdrop-filter:blur(14px) saturate(160%);
+    border:1px solid rgba(233,211,164,.5);
+    border-radius:50%;
+    box-shadow:0 10px 26px -14px rgba(21,39,32,.4);
+    transition:top .4s ease, background .3s ease;
   }
+  .nav-toggle.open{background:rgba(21,39,32,.5);border-color:rgba(255,255,255,.3);}
   .nav-toggle-icon{
     width:32px;height:22px;position:relative;display:flex;
     flex-direction:column;justify-content:space-between;
   }
   .nav-toggle-icon span{
-    display:block;width:100%;height:2px;background:var(--white);border-radius:2px;
-    transition:transform .3s ease, opacity .3s ease;
+    display:block;width:100%;height:2px;background:var(--evergreen-deep);border-radius:2px;
+    transition:transform .3s ease, opacity .3s ease, background .3s ease;
   }
+  .nav-toggle.open .nav-toggle-icon span{background:var(--white);}
   .nav-toggle.open .nav-toggle-icon span:nth-child(1){transform:translateY(10px) rotate(45deg);}
   .nav-toggle.open .nav-toggle-icon span:nth-child(2){opacity:0;}
   .nav-toggle.open .nav-toggle-icon span:nth-child(3){transform:translateY(-10px) rotate(-45deg);}
-  header.scrolled + .nav-toggle{top:17px;}
+  header.scrolled + .nav-toggle{top:25px;}
 
   .mobile-menu{
     position:fixed;inset:0;z-index:1000;
@@ -173,12 +180,12 @@
   }
   .hero-copy{display:flex;flex-direction:column;align-items:center;}
   .hero-copy .eyebrow{
-    color:#f0dcae;font-family:'Work Sans',sans-serif;font-style:normal;
-    font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:22px;
+    color:#f0dcae;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+    font-size:1.15rem;letter-spacing:.01em;text-transform:none;margin-bottom:22px;
     text-shadow:0 2px 12px rgba(0,0,0,.4);
   }
   .hero-copy h1{
-    font-family:'Playfair Display',serif;
+    font-family:'Bebas Neue',sans-serif;
     color:var(--white);font-size:clamp(1.7rem,7.4vw,5.9rem);font-weight:700;
     margin:0 0 18px;line-height:1.05;letter-spacing:.005em;white-space:nowrap;
     text-shadow:0 4px 30px rgba(0,0,0,.5), 0 0 60px rgba(230,201,138,.3);
@@ -208,38 +215,24 @@
   .section-pad-sm{padding:80px 0;}
 
   /* ---------- about ---------- */
-  .about-head{margin:0 0 40px;}
+  .about-head{margin:0 0 40px;text-align:center;}
   .about-head .eyebrow{color:var(--brass);}
   .about-head h2{
     font-size:clamp(2rem,3.6vw,2.8rem);color:var(--evergreen-deep);margin:10px 0 0;font-weight:500;
   }
-  @media (min-width:901px){
-    .about-head h2{white-space:nowrap;}
-  }
-  .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;align-items:start;}
+  .about-grid{display:grid;grid-template-columns:1.05fr 1fr 1.05fr;gap:36px;align-items:center;}
   .about-photo{
-    position:relative;padding:16px;background:var(--white);border-radius:10px;
+    position:relative;padding:20px;background:var(--white);border-radius:10px;
     box-shadow:0 30px 54px -26px rgba(21,39,32,.4), 0 10px 22px -12px rgba(21,39,32,.18);
   }
-  .about-photo img{border-radius:6px;width:100%;height:600px;object-fit:cover;object-position:center 12%;}
+  .about-photo img{border-radius:6px;width:100%;aspect-ratio:2/3;height:auto;object-fit:cover;object-position:center 12%;}
+  .about-photo.about-photo-family img{object-position:center 20%;}
   .about-photo::before{
     content:'';position:absolute;inset:9px;border:1px solid var(--brass);border-radius:5px;
     pointer-events:none;
   }
-  .about-photo-accent{
-    position:absolute;left:-28px;bottom:-28px;z-index:4;
-    width:150px;height:150px;padding:6px;background:var(--white);border-radius:8px;
-    box-shadow:0 16px 32px -14px rgba(21,39,32,.5);
-  }
-  .about-photo-accent img{
-    width:100%;height:100%;border-radius:4px;object-fit:cover;object-position:center 25%;
-    display:block;
-  }
-  .about-photo-accent::before{
-    content:'';position:absolute;inset:5px;border:1px solid var(--brass);border-radius:3px;
-    pointer-events:none;
-  }
-  .about-copy p{color:#3c473f;margin-bottom:14px;font-size:1.07rem;}
+  .about-copy{text-align:center;}
+  .about-copy p{color:#3c473f;margin:0 auto 12px;max-width:38ch;font-size:.92rem;}
   .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px;padding-top:32px;border-top:1px solid var(--line);}
   .stat-row .num{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--evergreen);}
   .stat-row .label{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--slate);margin-top:4px;}
@@ -426,7 +419,8 @@
     .contact h2{white-space:nowrap;font-size:clamp(1.4rem,2.6vw,2.6rem);}
   }
   .contact p.lead{color:rgba(255,255,255,.82);max-width:420px;margin-bottom:34px;}
-  .contact-links{display:flex;flex-direction:column;gap:10px;margin-bottom:34px;}
+  .contact-links{display:flex;flex-direction:column;gap:14px;margin-bottom:34px;}
+  .contact-links-group{display:flex;flex-direction:column;gap:0;}
   .contact-links a{font-size:1.05rem;border-bottom:1px solid transparent;padding-bottom:2px;align-self:flex-start;transition:border-color .3s ease, color .3s ease;}
   .contact-links a:hover{border-color:var(--brass);color:#e9d3a4;}
   .contact-links .cta-icon{display:none;}
@@ -503,9 +497,9 @@
     .about-grid,.testi-grid,.contact-grid{grid-template-columns:1fr;}
     .carousel{padding:0 54px;}
     .carousel-arrow{width:42px;height:42px;}
-    .about-photo{margin-left:28px;}
-    .about-photo img{height:360px;}
-    .about-photo-accent{width:110px;height:110px;left:-20px;bottom:-20px;}
+    .about-photo{max-width:320px;margin:0 auto;}
+    .about-photo img{height:auto;}
+    .about-copy p{max-width:none;}
     .form-row,.interest-options{grid-template-columns:1fr;}
     .contact-form{padding:30px;}
     .stat-row{grid-template-columns:1fr 1fr 1fr;gap:16px;}
@@ -516,8 +510,9 @@
     .hero{min-height:60vh;padding:150px 0 140px;}
     .hero-inner{padding:0 18px;}
     .stat-row{grid-template-columns:1fr;gap:20px;text-align:left;}
-    .brand{margin-left:-16px;}
-    .brand-logo-chip img{height:36px;}
+    .brand-logo-chip img{height:44px;}
+    .nav-toggle{top:20px;}
+    header.scrolled + .nav-toggle{top:14px;}
     .carousel{padding:0 42px;}
     .carousel-stage{height:420px;}
     .carousel-slide{width:260px;height:330px;}
@@ -591,8 +586,8 @@
       <ul>
         <li><a href="#top">Home</a></li>
         <li><a href="#about">Meet Matt</a></li>
-        <li><a href="#sales">Successful Sales</a></li>
         <li><a href="#diptych">Process</a></li>
+        <li><a href="#sales">Successful Sales</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
     </nav>
@@ -607,8 +602,8 @@
     <ul>
       <li><a href="#top">Home</a></li>
       <li><a href="#about">Meet Matt</a></li>
-      <li><a href="#sales">Successful Sales</a></li>
       <li><a href="#diptych">Process</a></li>
+      <li><a href="#sales">Successful Sales</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="mobile-menu-contact">
@@ -641,20 +636,20 @@
   <div class="wrap">
     <div class="about-head reveal">
       <p class="eyebrow">About Matt</p>
-      <h2>There's no place quite like the Pacific Northwest.</h2>
+      <h2>There's no place like the Pacific Northwest.</h2>
     </div>
     <div class="about-grid">
-    <div class="about-photo reveal">
+    <div class="about-photo about-photo-solo reveal">
       <img src="images/matt-headshot.jpg" alt="Matthew Pelascini portrait">
-      <div class="about-photo-accent">
-        <img src="images/matt-family.jpg" alt="Matthew Pelascini with his family">
-      </div>
     </div>
     <div class="about-copy reveal">
       <p>I&rsquo;ve been fortunate to call the Seattle area home for more than 30 years, and I&rsquo;ve had the privilege of helping many of my clients do the same. Real estate has given me the opportunity to combine my passion for this community with my commitment to helping people make some of the most important decisions of their lives.</p>
       <p>My approach goes beyond the standard responsibilities of a Realtor&reg;. I take pride in building a personal relationship with every client and truly becoming a partner throughout the process. Whether you&rsquo;re purchasing your first home, looking for the next chapter, selling a longtime residence, or investing in real estate, I believe the best results come from listening closely, communicating openly, and understanding what matters most to you.</p>
       <p>I work out of Windermere Bellevue West as an Associate Broker and have built a team around me with more than 50 years of combined real estate experience. Together, we bring a depth of knowledge, local expertise, and hands-on service to every transaction. I&rsquo;m proud to be recognized as a top-producing broker in Western Washington, specializing in residential real estate throughout Seattle and the surrounding communities.</p>
       <p>Most importantly, I&rsquo;m grateful for the relationships that have come from this business. Real estate is about much more than buying or selling a home&mdash;it&rsquo;s about helping people navigate change, reach their goals, and ultimately find a place they&rsquo;re excited to call home. I look forward to the opportunity to walk alongside you through that process.</p>
+    </div>
+    <div class="about-photo about-photo-family reveal">
+      <img src="images/matt-family.jpg" alt="Matthew Pelascini with his family">
     </div>
     </div>
   </div>
@@ -665,8 +660,8 @@
 <section class="section-pad" id="sales">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">Recent Sales</p>
-      <h2>Homes I've Sold</h2>
+      <p class="eyebrow">Successful Sales</p>
+      <h2>Featured Listings and Sales</h2>
       <p>A few recent homes I've helped clients buy and sell across Seattle and the Eastside.</p>
     </div>
     <div class="carousel reveal">
@@ -892,12 +887,14 @@
   <div class="wrap">
     <div class="contact-grid">
       <div class="contact-side reveal">
-        <h2>I'd love to hear from you</h2>
+        <h2>I'd love to hear from you.</h2>
         <p class="lead">Whether you're just starting to think about buying or selling, or ready to make a move &mdash; reach out any time.</p>
         <div class="contact-links">
-          <a href="tel:12062275444"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></span><span class="cta-text">206.227.5444</span></a>
-          <a href="mailto:matt.pelascini@windermere.com"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2.4V6.6l8 5.6 8-5.6v-.2H4zm16 2.3l-7.4 5.2a1 1 0 01-1.2 0L4 8.7V18h16V8.7z"/></svg></span><span class="cta-text">matt.pelascini@windermere.com</span></a>
-          <a href="https://maps.google.com/?q=150+120th+Ave+NE+Suite+F+200,+Bellevue,+WA+98005" target="_blank" rel="noopener"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2c-4.42 0-8 3.58-8 8 0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg></span><span class="cta-text">150 120th Ave NE Suite F 200, Bellevue, WA 98005</span></a>
+          <div class="contact-links-group">
+            <a href="tel:12062275444"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></span><span class="cta-text">206.227.5444</span></a>
+            <a href="mailto:matt.pelascini@windermere.com"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2.4V6.6l8 5.6 8-5.6v-.2H4zm16 2.3l-7.4 5.2a1 1 0 01-1.2 0L4 8.7V18h16V8.7z"/></svg></span><span class="cta-text">matt.pelascini@windermere.com</span></a>
+          </div>
+          <a href="https://maps.google.com/?q=150+120th+Ave+NE+Suite+F+200,+Bellevue,+WA+98005" target="_blank" rel="noopener"><span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2c-4.42 0-8 3.58-8 8 0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg></span><span class="cta-text">150 120th Ave NE Suite F 200,<br>Bellevue, WA 98005</span></a>
         </div>
         <div class="social-row">
           <a href="https://www.facebook.com/people/Matthew-J-Pelascini-Real-Estate/100063570763015/" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6C16.4 3.55 15.4 3.5 14.3 3.5c-2.4 0-4 1.45-4 4.1V9.9H7.6V13h2.7v8h3.2z"/></svg></a>
