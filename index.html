@@ -23,7 +23,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  section[id]{scroll-margin-top:90px;}
+  section[id]{scroll-margin-top:110px;}
   body{
     font-family:'Work Sans',sans-serif;
     color:var(--ink);
@@ -58,7 +58,7 @@
   /* ---------- nav ---------- */
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    padding:14px 0;
+    padding:10px 0;
     background:rgba(233,211,164,.28);
     backdrop-filter:blur(18px) saturate(160%);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
@@ -67,7 +67,7 @@
     transition:background .4s ease, padding .4s ease, box-shadow .4s ease, border-color .4s ease;
   }
   header.scrolled{
-    padding:8px 0;
+    padding:6px 0;
     background:rgba(233,211,164,.44);
     border-color:rgba(233,211,164,.65);
     box-shadow:0 16px 36px -16px rgba(21,39,32,.45);
@@ -82,17 +82,20 @@
     display:flex;align-items:center;position:relative;
     padding:2px 0;
   }
-  .brand-logo-chip img{height:74px;width:auto;display:block;}
+  .brand-logo-chip img{height:84px;width:auto;display:block;}
   header nav ul{list-style:none;display:flex;gap:36px;align-items:center;}
   header nav a{
-    color:var(--evergreen-deep);font-size:.86rem;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--white);font-size:1.02rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
     position:relative;padding-bottom:4px;
+    text-shadow:0 1px 6px rgba(21,39,32,.35);
   }
   header nav a::after{
-    content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--brass);
+    content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--brass);
     transition:width .3s ease;
   }
   header nav a:hover::after{width:100%;}
+  header nav a.active{color:var(--brass);}
+  header nav a.active::after{width:100%;}
   .nav-cta{
     border:1px solid rgba(28,43,36,.35);
     padding:9px 18px;border-radius:2px;
@@ -147,6 +150,7 @@
     transition:color .3s ease;
   }
   .mobile-menu nav > ul a:hover{color:var(--brass);}
+  .mobile-menu nav > ul a.active{color:var(--brass);}
   .mobile-menu-contact{margin-top:44px;display:flex;flex-direction:column;gap:14px;align-items:center;}
   .mobile-menu-contact a{font-family:'Work Sans',sans-serif;font-size:.92rem;letter-spacing:.03em;color:rgba(255,255,255,.7);}
   .mobile-menu-contact a:hover{color:var(--brass);}
@@ -280,14 +284,21 @@
   .carousel-arrow-right{right:0;}
 
   /* ---------- testimonials ---------- */
-  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+  .testi-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;}
   .testi-card{
-    background:var(--white);border:1px solid var(--line);border-radius:3px;padding:16px 15px;
+    background:var(--white);border:1px solid rgba(216,210,193,.7);border-radius:10px;padding:24px 22px 20px;
     display:flex;flex-direction:column;
+    box-shadow:0 12px 28px -20px rgba(21,39,32,.35);
+    transition:transform .3s ease, box-shadow .3s ease;
+    flex:1 1 260px;max-width:320px;
   }
-  .testi-card .quote-mark{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--brass);line-height:1;margin-bottom:4px;}
-  .testi-card p{font-size:.78rem;color:#3c473f;flex-grow:1;margin-bottom:10px;}
-  .testi-card .who{font-family:'Fraunces',serif;font-style:italic;color:var(--evergreen);font-size:.82rem;}
+  .testi-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -18px rgba(21,39,32,.4);}
+  .testi-card .quote-mark{font-family:'Fraunces',serif;font-size:2.1rem;color:var(--brass);line-height:1;margin-bottom:2px;opacity:.85;}
+  .testi-card p{font-size:.74rem;line-height:1.6;color:#3c473f;flex-grow:1;margin-bottom:14px;}
+  .testi-card .who{
+    font-family:'Fraunces',serif;font-style:italic;color:var(--evergreen);font-size:.8rem;
+    padding-top:12px;border-top:1px solid var(--line);
+  }
 
   /* ---------- diptych ---------- */
   .diptych{display:flex;height:76vh;position:relative;overflow:hidden;}
@@ -494,7 +505,9 @@
   @media (max-width:900px){
     header nav{display:none;}
     .nav-toggle{display:flex;}
-    .about-grid,.testi-grid,.contact-grid{grid-template-columns:1fr;}
+    .brand-logo-chip img{height:60px;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .testi-card{flex-basis:100%;max-width:420px;}
     .carousel{padding:0 54px;}
     .carousel-arrow{width:42px;height:42px;}
     .about-photo{max-width:320px;margin:0 auto;}
@@ -640,7 +653,7 @@
     </div>
     <div class="about-grid">
     <div class="about-photo about-photo-solo reveal">
-      <img src="images/matt-headshot.jpg" alt="Matthew Pelascini portrait">
+      <img src="images/matt-headshot.png" alt="Matthew Pelascini portrait">
     </div>
     <div class="about-copy reveal">
       <p>I&rsquo;ve been fortunate to call the Seattle area home for more than 30 years, and I&rsquo;ve had the privilege of helping many of my clients do the same. Real estate has given me the opportunity to combine my passion for this community with my commitment to helping people make some of the most important decisions of their lives.</p>
@@ -657,12 +670,107 @@
 
 <svg class="shoreline" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 20 Q 120 4, 240 20 T 480 20 T 720 20 T 960 20 T 1180 20"/></svg>
 
+<div class="wrap" style="text-align:center;padding:48px 32px 0;">
+  <p class="eyebrow">Process</p>
+</div>
+
+<section class="diptych" id="diptych">
+  <div class="diptych-panel diptych-buyers" tabindex="0" role="button" aria-pressed="false" aria-label="Buying a Home. Press to see the step-by-step process.">
+    <div class="diptych-flip">
+      <div class="diptych-face diptych-front">
+        <div class="diptych-bg-outer"><div class="diptych-bg"></div></div>
+        <div class="diptych-overlay"></div>
+        <div class="diptych-dim"></div>
+        <div class="diptych-copy">
+          <h2>Buying a Home</h2>
+          <span class="diptych-underline"></span>
+          <p>See how I guide you from first search to closing</p>
+        </div>
+      </div>
+      <div class="diptych-face diptych-back">
+        <button type="button" class="diptych-back-btn" tabindex="-1" aria-label="Back to photo">&larr; Back</button>
+        <div class="diptych-back-inner">
+          <h3>Your Home Buying Journey</h3>
+          <p>A clear, personal process built around your goals &mdash; from our first conversation to the day you get the keys.</p>
+          <div class="diptych-steps">
+            <div class="diptych-step">
+              <span class="num">1</span>
+              <h4>Consultation</h4>
+              <p>We start with a focused conversation about your goals, priorities, and timing.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">2</span>
+              <h4>Preparation</h4>
+              <p>We confirm you're ready to act, positioning you as a strong, credible buyer.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">3</span>
+              <h4>Property Search</h4>
+              <p>We identify on- and off-market opportunities aligned with your goals.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">4</span>
+              <h4>Negotiation &amp; Closing</h4>
+              <p>We manage offers and negotiations, staying hands-on through closing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="diptych-divider"></div>
+  <div class="diptych-panel diptych-sellers" tabindex="0" role="button" aria-pressed="false" aria-label="Selling Your Home. Press to see the step-by-step process.">
+    <div class="diptych-flip">
+      <div class="diptych-face diptych-front">
+        <div class="diptych-bg-outer"><div class="diptych-bg"></div></div>
+        <div class="diptych-overlay"></div>
+        <div class="diptych-dim"></div>
+        <div class="diptych-copy">
+          <h2>Selling Your Home</h2>
+          <span class="diptych-underline"></span>
+          <p>See how I market and manage your sale start to finish</p>
+        </div>
+      </div>
+      <div class="diptych-face diptych-back">
+        <button type="button" class="diptych-back-btn" tabindex="-1" aria-label="Back to photo">&larr; Back</button>
+        <div class="diptych-back-inner">
+          <h3>Selling Your Home, Start to Finish</h3>
+          <p>From preparing your home to closing day, I handle the details so you can focus on what's next.</p>
+          <div class="diptych-steps">
+            <div class="diptych-step">
+              <span class="num">1</span>
+              <h4>Strategy &amp; Pricing</h4>
+              <p>A tailored strategy built around your home and current market conditions.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">2</span>
+              <h4>Presentation &amp; Marketing</h4>
+              <p>Professional photography, video, and targeted campaigns.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">3</span>
+              <h4>Showings &amp; Offers</h4>
+              <p>We manage every showing and negotiate to protect your interests.</p>
+            </div>
+            <div class="diptych-step">
+              <span class="num">4</span>
+              <h4>Closing &amp; Support</h4>
+              <p>Hands-on through closing, and available for whatever comes next.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<svg class="shoreline" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 20 Q 120 4, 240 20 T 480 20 T 720 20 T 960 20 T 1180 20"/></svg>
+
 <section class="section-pad" id="sales">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Successful Sales</p>
-      <h2>Featured Listings and Sales</h2>
-      <p>A few recent homes I've helped clients buy and sell across Seattle and the Eastside.</p>
+      <h2>Recent Sales &amp; Client Successes</h2>
+      <p>A selection of recent homes I've had the opportunity to help clients buy and sell throughout Seattle and Eastside.</p>
     </div>
     <div class="carousel reveal">
       <button type="button" class="carousel-arrow carousel-arrow-left" id="carouselPrev" aria-label="Previous property">
@@ -762,99 +870,6 @@
     </div>
   </div>
 </section>
-
-<svg class="shoreline" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 20 Q 120 4, 240 20 T 480 20 T 720 20 T 960 20 T 1180 20"/></svg>
-
-<section class="diptych" id="diptych">
-  <div class="diptych-panel diptych-buyers" tabindex="0" role="button" aria-pressed="false" aria-label="Buying a Home. Press to see the step-by-step process.">
-    <div class="diptych-flip">
-      <div class="diptych-face diptych-front">
-        <div class="diptych-bg-outer"><div class="diptych-bg"></div></div>
-        <div class="diptych-overlay"></div>
-        <div class="diptych-dim"></div>
-        <div class="diptych-copy">
-          <h2>Buying a Home</h2>
-          <span class="diptych-underline"></span>
-          <p>See how I guide you from first search to closing</p>
-        </div>
-      </div>
-      <div class="diptych-face diptych-back">
-        <button type="button" class="diptych-back-btn" tabindex="-1" aria-label="Back to photo">&larr; Back</button>
-        <div class="diptych-back-inner">
-          <h3>Your Home Buying Journey</h3>
-          <p>A clear, personal process built around your goals &mdash; from our first conversation to the day you get the keys.</p>
-          <div class="diptych-steps">
-            <div class="diptych-step">
-              <span class="num">1</span>
-              <h4>Consultation</h4>
-              <p>We start with a focused conversation about your goals, priorities, and timing.</p>
-            </div>
-            <div class="diptych-step">
-              <span class="num">2</span>
-              <h4>Preparation</h4>
-              <p>We confirm you're ready to act, positioning you as a strong, credible buyer.</p>
-            </div>
-            <div class="diptych-step">
-              <span class="num">3</span>
-              <h4>Property Search</h4>
-              <p>We identify on- and off-market opportunities aligned with your goals.</p>
-            </div>
-            <div class="diptych-step">
-              <span class="num">4</span>
-              <h4>Negotiation &amp; Closing</h4>
-              <p>We manage offers and negotiations, staying hands-on through closing.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="diptych-divider"></div>
-  <div class="diptych-panel diptych-sellers" tabindex="0" role="button" aria-pressed="false" aria-label="Selling Your Home. Press to see the step-by-step process.">
-    <div class="diptych-flip">
-      <div class="diptych-face diptych-front">
-        <div class="diptych-bg-outer"><div class="diptych-bg"></div></div>
-        <div class="diptych-overlay"></div>
-        <div class="diptych-dim"></div>
-        <div class="diptych-copy">
-          <h2>Selling Your Home</h2>
-          <span class="diptych-underline"></span>
-          <p>See how I market and manage your sale start to finish</p>
-        </div>
-      </div>
-      <div class="diptych-face diptych-back">
-        <button type="button" class="diptych-back-btn" tabindex="-1" aria-label="Back to photo">&larr; Back</button>
-        <div class="diptych-back-inner">
-          <h3>Selling Your Home, Start to Finish</h3>
-          <p>From preparing your home to closing day, I handle the details so you can focus on what's next.</p>
-          <div class="diptych-steps">
-            <div class="diptych-step">
-              <span class="num">1</span>
-              <h4>Strategy &amp; Pricing</h4>
-              <p>A tailored strategy built around your home and current market conditions.</p>
-            </div>
-            <div class="diptych-step">
-              <span class="num">2</span>
-              <h4>Presentation &amp; Marketing</h4>
-              <p>Professional photography, video, and targeted campaigns.</p>
-            </div>
-            <div class="diptych-step">
-              <span class="num">3</span>
-              <h4>Showings &amp; Offers</h4>
-              <p>We manage every showing and negotiate to protect your interests.</p>
-            </div>
-            <div class="diptych-step">
-              <span class="num">4</span>
-              <h4>Closing &amp; Support</h4>
-              <p>Hands-on through closing, and available for whatever comes next.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <svg class="shoreline" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 20 Q 120 4, 240 20 T 480 20 T 720 20 T 960 20 T 1180 20"/></svg>
 
 <section class="section-pad" style="background:var(--paper-dim);">
@@ -878,6 +893,21 @@
         <span class="quote-mark">&ldquo;</span>
         <p>He found us all the right professionals to conduct inspections and clearly laid out every detail of the offer and counter-offer process until we were happy and comfortable. He's an absolute gem.</p>
         <div class="who">&mdash; Chloe D.</div>
+      </div>
+      <div class="testi-card reveal">
+        <span class="quote-mark">&ldquo;</span>
+        <p>Matt was so helpful and amazing in our home buying process. He is very knowledgeable about the Eastside and West side which helped us narrow down our search. His insight in each neighborhood, knowledge of the market, negotiating skills and attention to detail was very impressive. He held our hands through each step and helped us feel very comfortable and excited throughout the process. Thanks Matt!</p>
+        <div class="who">&mdash; Lola A.</div>
+      </div>
+      <div class="testi-card reveal">
+        <span class="quote-mark">&ldquo;</span>
+        <p>Matt was an incredible partner in our buying process. He brings deep knowledge of the local market paired with a clear customer-focused approach that just blew us away. He also negotiated on our behalf to get us an amazing deal. His guidance was invaluable to us and now we are in our dream home! Thank you to Matt!</p>
+        <div class="who">&mdash; Ryan S.</div>
+      </div>
+      <div class="testi-card reveal">
+        <span class="quote-mark">&ldquo;</span>
+        <p>Matt was an absolute pleasure to work with. His knowledge, expertise, experience, and willingness to take the time to explain things to us made us so much more comfortable with this huge decision. We are first time buyers with a lot of questions, so I cannot overstate how helpful it was to have Matt there every step of the way. Matt also continued to check in with us after our purchase, which really made us feel well taken care of and supported. His sense of humor was an added bonus. We hope to stay in our home for many years to come, but we would not hesitate to enlist Matt&rsquo;s help again if we were to move. He is great!!</p>
+        <div class="who">&mdash; Mal K.</div>
       </div>
     </div>
   </div>
@@ -963,6 +993,21 @@
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 40);
   });
+
+  (function(){
+    const navLinks = Array.from(document.querySelectorAll('header nav a[href^="#"], .mobile-menu nav a[href^="#"]'));
+    const sections = Array.from(new Set(navLinks.map(a => document.getElementById(a.getAttribute('href').slice(1))))).filter(Boolean);
+    if (!sections.length) return;
+    const setActive = (id) => {
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    };
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(sec => spy.observe(sec));
+  })();
 
   (function(){
     const salesSection = document.getElementById('sales');
