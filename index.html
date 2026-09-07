@@ -59,17 +59,17 @@
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
     padding:10px 0;
-    background:rgba(233,211,164,.28);
+    background:rgba(21,39,32,.32);
     backdrop-filter:blur(18px) saturate(160%);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
-    border-bottom:1px solid rgba(233,211,164,.5);
+    border-bottom:1px solid rgba(173,138,82,.35);
     box-shadow:0 14px 34px -18px rgba(21,39,32,.4);
     transition:background .4s ease, padding .4s ease, box-shadow .4s ease, border-color .4s ease;
   }
   header.scrolled{
     padding:6px 0;
-    background:rgba(233,211,164,.44);
-    border-color:rgba(233,211,164,.65);
+    background:rgba(21,39,32,.92);
+    border-color:rgba(173,138,82,.5);
     box-shadow:0 16px 36px -16px rgba(21,39,32,.45);
   }
   .nav-inner{
@@ -85,7 +85,7 @@
   .brand-logo-chip img{height:84px;width:auto;display:block;}
   header nav ul{list-style:none;display:flex;gap:36px;align-items:center;}
   header nav a{
-    color:var(--white);font-size:1.02rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--white);font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
     position:relative;padding-bottom:4px;
     text-shadow:0 1px 6px rgba(21,39,32,.35);
   }
@@ -192,7 +192,7 @@
     font-family:'Bebas Neue',sans-serif;
     color:var(--white);font-size:clamp(1.7rem,7.4vw,5.9rem);font-weight:700;
     margin:0 0 18px;line-height:1.05;letter-spacing:.005em;white-space:nowrap;
-    text-shadow:0 4px 30px rgba(0,0,0,.5), 0 0 60px rgba(230,201,138,.3);
+    text-shadow:0 4px 30px rgba(0,0,0,.5);
   }
   .hero-copy .tagline{
     font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
@@ -373,15 +373,6 @@
     .diptych-divider{animation:diptychDividerPulse 2.6s ease-in-out infinite;}
     .diptych-copy h2{transition:transform .18s ease-out .04s, opacity .18s ease-out .04s;transform:translateY(10px);opacity:.88;}
     .diptych-underline{transition:transform .2s ease .04s;}
-
-    /* real 3D flip replaces the base cross-fade */
-    .diptych-flip{transform-style:preserve-3d;transition:transform .4s ease-in-out;}
-    .diptych-face{opacity:1;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:none;}
-    .diptych-front{pointer-events:auto;}
-    .diptych-back{transform:rotateY(180deg);pointer-events:none;}
-    .diptych-panel.flipped .diptych-flip{transform:rotateY(180deg);}
-    .diptych-panel.flipped .diptych-front{opacity:1;pointer-events:none;}
-    .diptych-panel.flipped .diptych-back{opacity:1;pointer-events:auto;}
   }
   @keyframes diptychKenBurns{0%{transform:scale(1);}100%{transform:scale(1.08);}}
   @keyframes diptychDividerPulse{
@@ -390,6 +381,16 @@
   }
 
   @media (prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+    /* real 3D flip replaces the base cross-fade — hover/fine-pointer devices only.
+       On some touchscreen GPUs this transform makes the front face's text render mirrored. */
+    .diptych-flip{transform-style:preserve-3d;transition:transform .4s ease-in-out;}
+    .diptych-face{opacity:1;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:none;}
+    .diptych-front{pointer-events:auto;}
+    .diptych-back{transform:rotateY(180deg);pointer-events:none;}
+    .diptych-panel.flipped .diptych-flip{transform:rotateY(180deg);}
+    .diptych-panel.flipped .diptych-front{opacity:1;pointer-events:none;}
+    .diptych-panel.flipped .diptych-back{opacity:1;pointer-events:auto;}
+
     .diptych-panel{transition:flex-basis .35s cubic-bezier(.65,0,.35,1);}
     .diptych:not(.is-flipped).hover-buyers .diptych-buyers{flex:0 0 62%;}
     .diptych:not(.is-flipped).hover-buyers .diptych-sellers{flex:0 0 38%;}
@@ -657,7 +658,6 @@
     </div>
     <div class="about-copy reveal">
       <p>I&rsquo;ve been fortunate to call the Seattle area home for more than 30 years, and I&rsquo;ve had the privilege of helping many of my clients do the same. Real estate has given me the opportunity to combine my passion for this community with my commitment to helping people make some of the most important decisions of their lives.</p>
-      <p>My approach goes beyond the standard responsibilities of a Realtor&reg;. I take pride in building a personal relationship with every client and truly becoming a partner throughout the process. Whether you&rsquo;re purchasing your first home, looking for the next chapter, selling a longtime residence, or investing in real estate, I believe the best results come from listening closely, communicating openly, and understanding what matters most to you.</p>
       <p>I work out of Windermere Bellevue West as an Associate Broker and have built a team around me with more than 50 years of combined real estate experience. Together, we bring a depth of knowledge, local expertise, and hands-on service to every transaction. I&rsquo;m proud to be recognized as a top-producing broker in Western Washington, specializing in residential real estate throughout Seattle and the surrounding communities.</p>
       <p>Most importantly, I&rsquo;m grateful for the relationships that have come from this business. Real estate is about much more than buying or selling a home&mdash;it&rsquo;s about helping people navigate change, reach their goals, and ultimately find a place they&rsquo;re excited to call home. I look forward to the opportunity to walk alongside you through that process.</p>
     </div>
@@ -1102,7 +1102,7 @@
     if (!stage || !track) return;
     const slides = Array.from(track.children);
     const total = slides.length;
-    let active = 0;
+    let active = 1; // Bellevue
 
     const TIERS = {
       0: { scale: 1.06, blur: 0,  opacity: 1,   rotate: 0,  y: 0  },
